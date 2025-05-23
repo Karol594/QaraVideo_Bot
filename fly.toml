@@ -1,18 +1,6 @@
-toml
-app = "qaravideo"
+app = "qaravideo-bot"
+
 primary_region = "fra"
 
 [build]
-  builder = "paketobuildpacks/builder:base"
-
-[env]
-  PORT = "8080"
-
-[http_service]
-  internal_port = 8080
-  force_https = true
-
-[[vm]]
-  cpu_kind = "shared"
-  cpus = 1
-  memory_mb = 256
+  dockerfile = "Dockerfile"
