@@ -1,15 +1,15 @@
 import os
-from telegram.ext import Application, CommandHandler
+from telegram import Update
+from telegram.ext import Application, CommandHandler, ContextTypes
 from dotenv import load_dotenv
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-async def start(update, context):
-    await update.message.reply_text("Сәлем! Мен QaraVideo Бот боламын. Видео жүктеп берейін.")
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Hello! I'm QaraVideo Bot. Send me a YouTube link to download the video!")
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8080))
+if __name__ == "__main__":
     application = Application.builder().token(BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", start))
     application.run_polling()
