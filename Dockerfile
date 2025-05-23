@@ -1,13 +1,17 @@
-dockerfile
-FROM python:3.11-slim
+# Python негізинде образ
+FROM python:3.10-slim
 
+# Жумыс директориясын орнатамыз
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
+# Барлық файлларды контейнерге көшіремиз
 COPY . .
 
-EXPOSE 8080
+# Тәуелдиликлерди орнатамыз
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "main.py"]
+# Порт
+ENV PORT=8080
+
+# Бастау командасы
+CMD ["python3", "main.py"]
