@@ -1,6 +1,7 @@
+dockerfile
 FROM python:3.10-slim
 WORKDIR /app
-COPY . .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-ENV PORT=8080
-CMD ["python3", "main.py"]
+COPY . .
+CMD ["python", "main.py"]
